@@ -32,7 +32,7 @@
   a {
     padding: .1875rem .5rem;
     margin-top: .125rem;
-    margin-left: 1.25rem;
+    margin-left: 1.5rem;
     color: rgba($black, .65);
     text-decoration: if($link-decoration == none, null, none);
 
@@ -46,7 +46,7 @@
 
   .btn {
     // Custom styles (as we don't have a completely neutral button style)
-    padding: .25rem .5rem;
+    padding: .375rem .625rem .375rem .5rem;
     font-weight: 600;
     color: rgba($black, .65);
     background-color: transparent;
@@ -63,8 +63,10 @@
     }
 
     // Add chevron if there's a submenu
-    &::before {
-      width: 1.25em;
+    &::after {
+      width: 1em;
+      height: 1em;
+      margin-left: auto;
       line-height: 0; // Align in the middle
       content: escape-svg($sidebar-collapse-icon);
       @include transition(transform .35s ease);
@@ -74,7 +76,7 @@
     &[aria-expanded="true"] {
       color: rgba($black, .85);
 
-      &::before {
+      &::after {
         transform: rotate(90deg);
       }
     }

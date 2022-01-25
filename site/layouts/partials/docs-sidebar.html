@@ -2,7 +2,7 @@
   {{- $url := split .Permalink "/" -}}
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
-  <ul class="list-unstyled mb-0 py-3 pt-md-1">
+  <ul class="list-unstyled mb-0 py-3 pt-md-1 pe-lg-2">
   {{- range $group := .Site.Data.sidebar -}}
     {{- $link := $group.title -}}
     {{- $link_slug := $link | urlize -}}
@@ -17,7 +17,10 @@
 
     {{- if $group.pages }}
       <li class="mb-1">
-        <button class="btn d-inline-flex align-items-center rounded{{ if not $is_active_group }} collapsed{{ end }}" data-bs-toggle="collapse" data-bs-target="#{{ $group_slug }}-collapse" aria-expanded="{{ $is_active_group }}"{{ if $is_active_group }} aria-current="true"{{ end }}>
+        <button class="btn d-flex w-100 align-items-center rounded{{ if not $is_active_group }} collapsed{{ end }}" data-bs-toggle="collapse" data-bs-target="#{{ $group_slug }}-collapse" aria-expanded="{{ $is_active_group }}"{{ if $is_active_group }} aria-current="true"{{ end }}>
+          {{- if $group.icon }}
+            <svg class="bi me-2"{{- if $group.icon_color }} style="color: var(--bs-{{ $group.icon_color }});"{{- end }}><use xlink:href="#{{ $group.icon }}"></use></svg>
+          {{- end }}
           {{ $group.title }}
         </button>
 
