@@ -1,7 +1,6 @@
 .bd-layout {
   @include media-breakpoint-down(md) {
-    padding-right: $bd-gutter-x;
-    padding-left: $bd-gutter-x;
+    --bs-gutter-x: #{$bd-gutter-x};
   }
 
   @include media-breakpoint-up(md) {
